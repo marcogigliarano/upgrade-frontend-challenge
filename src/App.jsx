@@ -1,16 +1,20 @@
-import React, { Component } from "react";
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { FormProvider } from "./context/FormContext";
+import Layout from "./pages/Layout/MultiStepFormLayout";
 
-const App = () => {
-  return (
-    <div>
-      <header>
-        <h1>Welcome to Upgrade challenge</h1>
-      </header>
-      <p>
-        To get started, edit <code>src/App.jsx</code> and save to reload.
-      </p>
-    </div>
-  );
-};
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <Router>
+      <FormProvider>
+        <Layout />
+      </FormProvider>
+    </Router>
+  </QueryClientProvider>
+);
 
 export default App;
