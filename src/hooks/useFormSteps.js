@@ -9,6 +9,10 @@ export const useFormSteps = (initialValues) => {
     setFormData((prev) => ({ ...prev, ...data }));
   };
 
+  const resetFormData = () => {
+    setFormData(initialValues);
+  };
+
   const goTo = (path) => {
     navigate(path);
   };
@@ -16,6 +20,7 @@ export const useFormSteps = (initialValues) => {
   return {
     formData,
     updateFormData,
+    resetFormData,
     goTo,
   };
 };

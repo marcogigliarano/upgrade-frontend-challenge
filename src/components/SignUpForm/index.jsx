@@ -22,35 +22,55 @@ const SignUpForm = ({ initialValues, onSubmit }) => {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>First Name</label>
+    <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+      <h3>Sign Up</h3>
+      <div className="form-field">
+        <label htmlFor="name" className="form-label">
+          First Name
+        </label>
+
         <Controller
           name="name"
           control={control}
-          render={({ field }) => <input {...field} />}
+          render={({ field }) => <input {...field} className="form-control" />}
         />
-        {errors.name && <span>{errors.name.message}</span>}
+        {errors.name && (
+          <span className="text-danger small">{errors.name.message}</span>
+        )}
       </div>
-      <div>
-        <label>Email</label>
+      <div className="form-field">
+        <label htmlFor="email" className="form-label">
+          Email
+        </label>
         <Controller
           name="email"
           control={control}
-          render={({ field }) => <input {...field} />}
+          render={({ field }) => <input {...field} className="form-control" />}
         />
-        {errors.email && <span>{errors.email.message}</span>}
+        {errors.email && (
+          <span className="text-danger small">{errors.email.message}</span>
+        )}
       </div>
-      <div>
-        <label>Password</label>
+      <div className="form-field">
+        <label htmlFor="email" className="form-label">
+          Password
+        </label>
         <Controller
           name="password"
           control={control}
-          render={({ field }) => <input type="password" {...field} />}
+          render={({ field }) => (
+            <input type="password" {...field} className="form-control" />
+          )}
         />
-        {errors.password && <span>{errors.password.message}</span>}
+        {errors.password && (
+          <span className="text-danger small">{errors.password.message}</span>
+        )}
       </div>
-      <button type="submit">Next</button>
+      <div className="form-actions">
+        <button type="submit" className="btn btn-primary">
+          Next
+        </button>
+      </div>
     </form>
   );
 };

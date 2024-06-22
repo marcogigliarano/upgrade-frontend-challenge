@@ -16,7 +16,6 @@ const MoreInfoPage = () => {
     goTo("/");
   };
 
-  if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Failed to load colors</p>;
 
   return (
@@ -25,6 +24,7 @@ const MoreInfoPage = () => {
       colors={colors}
       onSubmit={handleSubmit}
       onBack={handleBack}
+      isLoading={isLoading}
     />
   );
 };

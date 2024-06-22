@@ -5,7 +5,7 @@ import { useSubmitForm } from "../../hooks/useSubmitForm";
 
 const ConfirmationPage = () => {
   const { formData, goTo } = useFormContext();
-  const { mutate, isLoading } = useSubmitForm();
+  const { mutate, isLoading, status } = useSubmitForm();
 
   const handleSubmit = () => {
     mutate(formData, {
@@ -13,8 +13,7 @@ const ConfirmationPage = () => {
         goTo("/success");
       },
       onError: (error) => {
-        console.log(error);
-        //goTo("/error");
+        goTo("/error");
       },
     });
   };
@@ -28,7 +27,7 @@ const ConfirmationPage = () => {
       formData={formData}
       onSubmit={handleSubmit}
       onBack={handleBack}
-      loading={isLoading}
+      loading={status === "pending"}
     />
   );
 };

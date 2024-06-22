@@ -12,5 +12,6 @@ export const useFetchColors = () => {
   return useQuery({
     queryKey: ["colors"],
     queryFn: fetchColors,
+    staleTime: 5 * 60 * 1000,
   });
 };

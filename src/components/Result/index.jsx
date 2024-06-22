@@ -4,14 +4,24 @@ const Result = ({ isSuccess, onRetry, onRestart }) => {
   return (
     <div>
       {isSuccess ? (
-        <div>
-          <h3>Form successfully submitted!</h3>
-          <button onClick={onRestart}>Restart</button>
+        <div className="form-container">
+          <h3>Success!</h3>
+          <p>You should receive a confirmation email soon.</p>
+          <div className="form-actions">
+            <button onClick={onRestart} className="btn btn-primary">
+              Restart
+            </button>
+          </div>
         </div>
       ) : (
-        <div>
-          <h3>There was an error submitting the form</h3>
-          <button onClick={onRetry}>Try Again</button>
+        <div className="form-container">
+          <h3>Error</h3>
+          <p>Uh oh. Something went wrong. Please try again later</p>
+          <div className="form-actions">
+            <button onClick={onRetry} className="btn btn-primary">
+              Try Again
+            </button>
+          </div>
         </div>
       )}
     </div>

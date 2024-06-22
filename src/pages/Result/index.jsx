@@ -4,7 +4,7 @@ import Result from "../../components/Result";
 import { useLocation } from "react-router-dom";
 
 const ResultPage = () => {
-  const { goTo } = useFormContext();
+  const { goTo, resetFormData } = useFormContext();
   const location = useLocation();
   const isSuccess = location.pathname === "/success";
 
@@ -13,6 +13,7 @@ const ResultPage = () => {
   };
 
   const handleRestart = () => {
+    resetFormData({});
     goTo("/");
   };
 
