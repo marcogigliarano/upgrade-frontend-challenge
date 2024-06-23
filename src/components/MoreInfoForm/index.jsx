@@ -30,17 +30,25 @@ const MoreInfoForm = ({
     <form onSubmit={handleSubmit(onSubmit)} className="form-container">
       <h3>Additional Info</h3>
       <div className="form-field">
-        <label htmlFor="color" className="form-label">
+        <label id="label-colors" htmlFor="color" className="form-label">
           Favorite Color
         </label>
         {isLoading ? (
-          <span className="placeholder w-100"></span>
+          <div className="text-center">
+            <div className="spinner-border spinner-border-sm" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
         ) : (
           <Controller
             name="color"
             control={control}
             render={({ field }) => (
-              <select {...field} className="form-control">
+              <select
+                {...field}
+                aria-labelledby="label-colors"
+                className="form-control"
+              >
                 <option value="">Select a color</option>
                 {colors.map((color) => (
                   <option key={color} value={color}>
@@ -57,14 +65,19 @@ const MoreInfoForm = ({
       </div>
       <div className="form-field">
         <div className="form-check">
-          <label htmlFor="terms" className="form-label">
+          <label id="label-terms" htmlFor="terms" className="form-label">
             I agree to the terms and conditions
           </label>
           <Controller
             name="terms"
             control={control}
             render={({ field }) => (
-              <input type="checkbox" {...field} className="form-check-input" />
+              <input
+                type="checkbox"
+                {...field}
+                aria-labelledby="label-terms"
+                className="form-check-input"
+              />
             )}
           />
         </div>

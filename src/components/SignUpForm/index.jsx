@@ -25,41 +25,57 @@ const SignUpForm = ({ initialValues, onSubmit }) => {
     <form onSubmit={handleSubmit(onSubmit)} className="form-container">
       <h3>Sign Up</h3>
       <div className="form-field">
-        <label htmlFor="name" className="form-label">
+        <label id="label-name" htmlFor="name" className="form-label">
           First Name
         </label>
-
         <Controller
           name="name"
           control={control}
-          render={({ field }) => <input {...field} className="form-control" />}
+          render={({ field }) => (
+            <input
+              {...field}
+              aria-labelledby="label-name"
+              className="form-control"
+            />
+          )}
         />
         {errors.name && (
           <span className="text-danger small">{errors.name.message}</span>
         )}
       </div>
       <div className="form-field">
-        <label htmlFor="email" className="form-label">
+        <label id="label-email" htmlFor="email" className="form-label">
           Email
         </label>
         <Controller
           name="email"
           control={control}
-          render={({ field }) => <input {...field} className="form-control" />}
+          render={({ field }) => (
+            <input
+              {...field}
+              aria-labelledby="label-email"
+              className="form-control"
+            />
+          )}
         />
         {errors.email && (
           <span className="text-danger small">{errors.email.message}</span>
         )}
       </div>
       <div className="form-field">
-        <label htmlFor="email" className="form-label">
+        <label id="label-password" htmlFor="email" className="form-label">
           Password
         </label>
         <Controller
           name="password"
           control={control}
           render={({ field }) => (
-            <input type="password" {...field} className="form-control" />
+            <input
+              type="password"
+              {...field}
+              aria-labelledby="label-password"
+              className="form-control"
+            />
           )}
         />
         {errors.password && (
